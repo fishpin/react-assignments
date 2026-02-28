@@ -1,0 +1,293 @@
+/* Main app wrapper */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ── Header / Search Bar ── */
+.search-bar {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  border-bottom: 1px solid #e8e0d4;
+  margin-bottom: 2.5rem;
+}
+
+.search-bar h1 {
+  font-size: 3rem;
+  letter-spacing: -1px;
+  color: #2c2418;
+  margin-bottom: 0.3rem;
+}
+
+.search-bar p {
+  color: #8a7968;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ingredient-input {
+  flex: 1;
+  padding: 0.75rem 1.2rem;
+  font-size: 1rem;
+  border: 2px solid #d4c9b8;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  background-color: #fff;
+  color: #2c2418;
+  font-family: system-ui, sans-serif;
+  outline: none;
+}
+
+.ingredient-input:focus {
+  border-color: #9b6a3d;
+}
+
+.search-button {
+  padding: 0.75rem 1.6rem;
+  background-color: #9b6a3d;
+  color: #fff;
+  border: 2px solid #9b6a3d;
+  border-radius: 0 4px 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+}
+
+.search-button:hover {
+  background-color: #7a5230;
+  border-color: #7a5230;
+}
+
+/* Diet filter checkboxes */
+.diet-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.filter-label {
+  font-weight: 600;
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8a7968;
+  margin-right: 0.4rem;
+}
+
+.diet-option {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  color: #5a4a3a;
+  background: #fff;
+  border: 1px solid #d4c9b8;
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.diet-option:has(input:checked) {
+  background-color: #9b6a3d;
+  border-color: #9b6a3d;
+  color: #fff;
+}
+
+.diet-option input {
+  display: none; /* hidden — the pill style shows checked state */
+}
+
+/* ── Recipe Grid ── */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* ── Recipe Card ── */
+.recipe-card {
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(44, 36, 24, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px rgba(44, 36, 24, 0.15);
+}
+
+.recipe-image {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.recipe-info {
+  padding: 1.2rem;
+  text-align: left;
+}
+
+.recipe-info h3 {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: #2c2418;
+}
+
+.cook-time {
+  color: #9b6a3d;
+  font-size: 0.85rem;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  margin: 0 0 0.6rem 0;
+}
+
+.recipe-summary {
+  font-size: 0.85rem;
+  color: #8a7968;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.details-button {
+  background-color: transparent;
+  color: #9b6a3d;
+  border: 1.5px solid #9b6a3d;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.recipe-card:hover .details-button {
+  background-color: #9b6a3d;
+  color: #fff;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(44, 36, 24, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  background-color: #faf7f2;
+  border-radius: 10px;
+  padding: 2.5rem;
+  max-width: 660px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  text-align: left;
+  box-shadow: 0 20px 60px rgba(44, 36, 24, 0.25);
+}
+
+.modal-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content h2 {
+  font-size: 1.6rem;
+  margin: 0 0 0.4rem 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #e8e0d4;
+  color: #2c2418;
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.close-button:hover {
+  background: #d4c9b8;
+}
+
+.ingredients-list {
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-family: system-ui, sans-serif;
+  color: #5a4a3a;
+}
+
+.ingredients-list li {
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.instructions {
+  line-height: 1.8;
+  font-family: system-ui, sans-serif;
+  color: #5a4a3a;
+  font-size: 0.95rem;
+}
+
+/* ── Feedback messages ── */
+.loading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #8a7968;
+  font-family: system-ui, sans-serif;
+  margin-top: 3rem;
+}
+
+.error {
+  text-align: center;
+  color: #b85c38;
+  font-size: 1rem;
+  font-family: system-ui, sans-serif;
+  margin-top: 1rem;
+}
+
+.no-results {
+  text-align: center;
+  color: #8a7968;
+  font-family: system-ui, sans-serif;
+  margin-top: 3rem;
+}
