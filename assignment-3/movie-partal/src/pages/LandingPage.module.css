@@ -106,3 +106,18 @@
   box-shadow: 0 0 40px rgba(139, 26, 42, 0.45), 0 0 80px rgba(201, 168, 76, 0.08);
   transform: translateY(-1px);
 }
+
+@media (max-width: 480px) {
+  .titleMain {
+    font-size: 56px;
+  }
+
+  .titleSub {
+    font-size: 52px;
+  }
+
+  .enterBtn {
+    padding: 13px 40px;
+    font-size: 14px;
+  }
+}

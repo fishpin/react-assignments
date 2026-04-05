@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { Star, Calendar, Clock, X, Film } from "lucide-react";
@@ -16,6 +16,12 @@ function MovieDetailPage() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  // Prevent background scrolling while the overlay is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
   // Use append_to_response to fetch movie + credits in a single call
   useEffect(() => {
@@ -36,8 +42,15 @@ function MovieDetailPage() {
     fetchDetails();
   }, [id]);
 
-  const director = movie?.credits?.crew?.find((c) => c.job === "Director");
-  const cast = movie?.credits?.cast?.slice(0, 7) ?? [];
+  const director = useMemo(
+    () => movie?.credits?.crew?.find((c) => c.job === "Director"),
+    [movie]
+  );
+
+  const cast = useMemo(
+    () => movie?.credits?.cast?.slice(0, 7) ?? [],
+    [movie]
+  );
 
   const content = (
     <div className={styles.overlay} onClick={() => navigate("/movies")}>
@@ -56,7 +69,7 @@ function MovieDetailPage() {
         )}
 
         {/* Close button */}
-        <button className={styles.closeBtn} onClick={() => navigate("/movies")}>
+        <button className={styles.closeBtn} onClick={() => navigate("/movies")} aria-label="Close">
           <X size={15} />
         </button>
 
